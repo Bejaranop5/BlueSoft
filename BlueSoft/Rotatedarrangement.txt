@@ -1,0 +1,36 @@
+using System;
+
+class Program
+{
+
+	public const string Rotatedarrangement = "arr[";
+    static void Main(string[] args)
+    {
+        int[] arr = { 1, 2, 3, 4 };
+        int m = 2;
+        
+        RotateRight(arr, m);
+
+        Console.WriteLine($"{Rotatedarrangement}{string.Join(",", arr)}]");
+    }
+
+    static void RotateRight(int[] arr, int m)
+    {
+        int n = arr.Length;
+        m = m % n;
+
+        if (n == 0 || m == 0)
+        {
+            return;
+        }
+
+        int[] temp = new int[n];
+
+        for (int i = 0; i < n; i++)
+        {
+            temp[(i + m) % n] = arr[i];
+        }
+
+        Array.Copy(temp, arr, n);
+    }
+}
